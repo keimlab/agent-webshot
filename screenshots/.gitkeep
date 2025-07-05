@@ -1,0 +1,2 @@
+# This file ensures the screenshots directory is tracked by Git
+# while ignoring all actual screenshot files in subdirectories

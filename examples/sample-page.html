@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript/TypeScript/React/Next.js 学習ロードマップ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .tech-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tech-card.html-css {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        }
+        
+        .tech-card.javascript {
+            background: linear-gradient(135deg, #f7b733 0%, #fc4a1a 100%);
+        }
+        
+        .tech-card.typescript {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        }
+        
+        .tech-card.react {
+            background: linear-gradient(135deg, #61dafb 0%, #0ea5e9 100%);
+        }
+        
+        .tech-card.nextjs {
+            background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+        }
+        
+        .tech-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .tech-card .description {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .tech-card .features {
+            list-style: none;
+            font-size: 0.8rem;
+        }
+        
+        .tech-card .features li {
+            margin: 5px 0;
+            padding: 2px 0;
+        }
+        
+        .relationships {
+            margin-bottom: 30px;
+        }
+        
+        .relationships h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        .relationship-diagram {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .layer {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .layer.base { background: #fee2e2; }
+        .layer.enhanced { background: #fef3c7; }
+        .layer.ui { background: #dbeafe; }
+        .layer.framework { background: #e0f2fe; }
+        .layer.advanced { background: #f3f4f6; }
+        
+        .arrow {
+            font-size: 2rem;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .learning-path {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .learning-path h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+        }
+        
+        .step {
+            background: white;
+            padding: 20px 10px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+        }
+        
+        .step-number {
+            background: #3498db;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+        }
+        
+        .step h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .step .duration {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .step .topics {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        .key-points {
+            background: #e8f5e8;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border-left: 5px solid #27ae60;
+        }
+        
+        .key-points h3 {
+            color: #27ae60;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .key-points ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .key-points li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .key-points li:before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .deployment-section {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .deployment-section h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .deployment-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .deployment-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .deployment-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .price-tag {
+            background: #e74c3c;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .deployment-features {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .deployment-features li {
+            margin: 8px 0;
+            padding: 3px 0;
+            font-size: 0.85rem;
+        }
+        
+        .deployment-others {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .deployment-others h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .other-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .option {
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 3px solid #3498db;
+        }
+        
+        .option strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 3px;
+            font-size: 0.9rem;
+        }
+        
+        .option small {
+            color: #7f8c8d;
+            font-size: 0.75rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .tech-stack {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .relationship-diagram {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .steps {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .tech-stack {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .relationship-diagram {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .layer:not(:last-child)::after {
+                display: none;
+            }
+            
+            .deployment-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .vercel-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tech-stack,
+            .steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Modern Web Development Stack</h1>
+            <p>HTMLの基礎からモダンWeb開発まで - 完全学習ロードマップ（10-15週間）</p>
+        </div>
+        
+        <div class="tech-stack">
+            <div class="tech-card html-css">
+                <h3>HTML/CSS</h3>
+                <div class="description">Webページの基礎</div>
+                <ul class="features">
+                    <li>• ページ構造</li>
+                    <li>• 見た目・デザイン</li>
+                    <li>• レスポンシブ</li>
+                    <li>• レイアウト</li>
+                </ul>
+            </div>
+            
+            <div class="tech-card javascript">
+                <h3>JavaScript</h3>
+                <div class="description">プログラミングの基礎言語</div>
+                <ul class="features">
+                    <li>• 変数・関数・配列</li>
+                    <li>• イベント処理</li>
+                    <li>• DOM操作</li>
+                    <li>• ES6+機能</li>
+                </ul>
+            </div>
+            
+            <div class="tech-card typescript">
+                <h3>TypeScript</h3>
+                <div class="description">型安全なJavaScript</div>
+                <ul class="features">
+                    <li>• 型チェック</li>
+                    <li>• エラー予防</li>
+                    <li>• 開発体験向上</li>
+                    <li>• 大規模開発対応</li>
+                </ul>
+            </div>
+            
+            <div class="tech-card react">
+                <h3>React</h3>
+                <div class="description">UIコンポーネントライブラリ</div>
+                <ul class="features">
+                    <li>• コンポーネント</li>
+                    <li>• 状態管理</li>
+                    <li>• 仮想DOM</li>
+                    <li>• フック</li>
+                </ul>
+            </div>
+            
+            <div class="tech-card nextjs">
+                <h3>Next.js</h3>
+                <div class="description">Reactフレームワーク</div>
+                <ul class="features">
+                    <li>• 自動ルーティング</li>
+                    <li>• SSR/SSG</li>
+                    <li>• SEO対策</li>
+                    <li>• 全部入りパッケージ</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="relationships">
+            <h2>🔗 技術の関係性</h2>
+            <div class="relationship-diagram">
+                <div class="layer base">
+                    <strong>HTML/CSS</strong><br>
+                    <small>Web基礎</small><br>
+                </div>
+                <div class="layer enhanced">
+                    <strong>JavaScript</strong><br>
+                    <small>動的機能追加</small>
+                </div>
+                <div class="layer ui">
+                    <strong>TypeScript</strong><br>
+                    <small>型安全追加</small>
+                </div>
+                <div class="layer framework">
+                    <strong>React</strong><br>
+                    <small>UI機能追加</small>
+                </div>
+                <div class="layer advanced">
+                    <strong>Next.js</strong><br>
+                    <small>Web開発機能追加</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="learning-path">
+            <h2>📚 学習ステップ</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>HTML/CSS基礎</h4>
+                    <div class="duration">2-3週間</div>
+                    <div class="topics">
+                        HTML構造・要素<br>
+                        CSS・レイアウト<br>
+                        レスポンシブ
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>JavaScript基礎</h4>
+                    <div class="duration">2-3週間</div>
+                    <div class="topics">
+                        変数・関数・配列<br>
+                        オブジェクト・DOM<br>
+                        ES6+機能
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>TypeScript入門</h4>
+                    <div class="duration">1-2週間</div>
+                    <div class="topics">
+                        型アノテーション<br>
+                        インターフェース<br>
+                        型安全コード
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>React基礎</h4>
+                    <div class="duration">3-4週間</div>
+                    <div class="topics">
+                        コンポーネント・JSX<br>
+                        useState・useEffect<br>
+                        イベント処理
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Next.js実践</h4>
+                    <div class="duration">2-3週間</div>
+                    <div class="topics">
+                        ページ作成<br>
+                        SSR・SSG<br>
+                        プロジェクト構築
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="key-points">
+            <h3>💡 重要ポイント</h3>
+            <ul>
+                <li><strong>HTML/CSSから開始：</strong> Web開発の基礎をしっかり固める</li>
+                <li><strong>段階的学習：</strong> 各技術は前の技術の上に構築される</li>
+                <li><strong>スキルの積み重ね：</strong> 学んだ知識は全て活用される</li>
+                <li><strong>Next.js = React + Web開発機能：</strong> Reactを代替するのではなく拡張</li>
+                <li><strong>TypeScriptは任意：</strong> JavaScriptから始めてあとで追加可能</li>
+                <li><strong>実践重視：</strong> 理論より小さなプロジェクトで手を動かす</li>
+                <li><strong>Vercelで簡単公開：</strong> 学習成果を即座に世界に公開可能</li>
+            </ul>
+        </div>
+
+        <div class="deployment-section">
+            <div class="deployment-card vercel">
+                <div class="vercel-header">
+                    <span class="vercel-title">🎯 Vercel (推奨) </span>
+                    <span class="price-tag">無料枠あり！</span>
+                </div>
+                <div class="vercel-features">
+                    Next.js完全対応・設定不要・SSR対応・自動HTTPS・GitHub連携
+                </div>
+                <div class="other-services">
+                    <strong>その他:</strong> Azure Static Web Apps, AWS/Netlify, 自前サーバー
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
